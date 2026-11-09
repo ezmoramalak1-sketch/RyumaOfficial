@@ -1,0 +1,8 @@
+Package: com.ryuma.ios
+Name: RYUMA
+Version: 2.0.0
+Architecture: iphoneos-arm
+Description: RYUMA custom license UI for an app you own or are authorized to modify.
+Maintainer: RYUMA
+Author: RYUMA
+Section: Tweaks

@@ -1,0 +1,7 @@
+{
+    Filter = {
+        Bundles = (
+            "REPLACE.WITH.YOUR.APP.BUNDLE.ID"
+        );
+    };
+}
