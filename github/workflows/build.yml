@@ -1,0 +1,40 @@
+name: Build RYUMA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Theos
+        uses: waruhachi/theos-action@v2.6.3
+        with:
+          theos-src: waruhachi/theos
+          theos-branch: main
+          sdks-src: waruhachi/sdks
+          sdks-branch: main
+          remotelog: false
+          libgcuniversal: false
+          altlist: false
+          comet: false
+          orion: false
+
+      - name: Build RYUMA
+        run: make clean package FINALPACKAGE=1
+
+      - name: Upload RYUMA
+        uses: actions/upload-artifact@v4
+        with:
+          name: RYUMA-Portrait-Fix
+          path: |
+            .theos/obj/RYUMA.dylib
+            packages/*
+          if-no-files-found: error
